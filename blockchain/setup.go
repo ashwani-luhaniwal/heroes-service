@@ -187,5 +187,23 @@ func Initialize() (*FabricSetup, error) {
 		fmt.Printf("Chaincode %s installed (version %s)\n", setup.ChaincodeId, setup.ChaincodeVersion)
 	}
 
-	// 
+	// Instantiate Chaincode
+	// Call the Init function of the chaincode in order to initialize in every peer the new chaincode
+	err = fcutil.SendInstantiateCC(
+		setup.Channel,
+		setup.ChaincodeId,
+		setup.ChannelId,
+		[]string{"init"},	// Arguments for the invoke request
+		setup.ChaincodePath,
+		setup.ChaincodeVersion,
+		[]api.Peer{setup.Channel.GetPrimaryPeer()},	// Which peer to contact
+		setup.EventHub,
+	)
+	if err != nil {
+		return err
+	} else {
+		fmt.Printf("Chaincode %s instantiated (version %s)\n", setup.ChaincodeId, setup.ChaincodeVersion)
+	}
+
+	return nil
  }
