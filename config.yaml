@@ -42,4 +42,10 @@ client:
     mspDir: "msp"
     serverURL: "https://localhost:7054"
     certfiles:
-    
+      - "$GOPATH/src/github.com/chainhero/heroes-service/fixtures/tls/fabricca/ca/ca_root.pem"
+    client:
+      keyfile: "$GOPATH/src/github.com/chainhero/heroes-service/fixtures/tls/fabricca/client/client_client1-key.pem"
+      certfile: "$GOPATH/src/github.com/chainhero/heroes-service/fixtures/tls/fabricca/client/client_client1.pem"
+
+  cryptoconfig:
+    path: "$GOPATH/src/github.com/chainhero/heroes-service/fixtures/channel/crypto-config"
