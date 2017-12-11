@@ -166,7 +166,7 @@ func Initialize() (*FabricSetup, error) {
 		setup.ChaincodeId,
 		setup.ChaincodeVersion,
 		setup.ChaincodeGoPath,
-		setup.ChaincodePath
+		setup.ChaincodePath,
 	)
 
 	// Install Chaincode
