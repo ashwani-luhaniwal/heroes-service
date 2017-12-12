@@ -35,9 +35,9 @@ func main() {
 	}
 
 	// Initialize the Fabric SDK
-	_, err := blockchain.Initialize()
+	fabricSdk, err := blockchain.Initialize()
 	if err != nil {
-		fmt.Printf("Unable to initialize the Fabric SDK: %v", err)
+		fmt.Printf("Unable to initialize the Fabric SDK: %v\n", err)
 	}
 
 	// Install and instantiate the chaincode
