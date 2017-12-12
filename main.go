@@ -6,6 +6,8 @@ import (
 	"os"
 	"runtime"
 	"path/filepath"
+	"github.com/chainhero/heroes-service/web"
+	"github.com/chainhero/heroes-service/web/controllers"
 )
 
 // Fix empty GOPATH with golang 1.8 (see https://github.com/golang/go/blob/1363eeba6589fca217e155c829b2a7c00bc32a92/src/go/build/build.go#L260-L277)
@@ -47,27 +49,32 @@ func main() {
 	}
 
 	// Query the chaincode
-	response, err := fabricSdk.QueryHello()
+	/*response, err := fabricSdk.QueryHello()
 	if err != nil {
 		fmt.Printf("Unable to query hello on the chaincode: %v\n", err)
 	} else {
 		fmt.Printf("Response from the query hello: %s\n", response)
-	}
+	}*/
 
 	// Invoke the chaincode
-	txId, err := fabricSdk.InvokeHello("chainHero")
+	/*txId, err := fabricSdk.InvokeHello("chainHero")
 	if err != nil {
 		fmt.Printf("Unable to invoke hello on the chaincode: %v\n", err)
 	} else {
 		fmt.Printf("Successfully invoke hello, transaction ID: %s\n", txId)
-	}
+	}*/
 
 	// Query again the chaincode
-	response, err = fabricSdk.QueryHello()
+	/*response, err = fabricSdk.QueryHello()
 	if err != nil {
 		fmt.Printf("Unable to query hello on the chaincode: %v\n", err)
 	} else {
 		fmt.Printf("Response from the query hello: %s\n", response)
-	}
+	}*/
 
+	// Make the web application listening
+	app := &controllers.Application {
+		Fabric: fabricSdk,
+	}
+	web.Serve(app)
 }
